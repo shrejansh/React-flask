@@ -1,6 +1,8 @@
 import secrets
 import os
 from PIL import Image
+import time
+import requests
 
 from flask import render_template,url_for, flash, redirect, request, abort
 from flaskblog import app, db, bcrypt, mail
@@ -187,3 +189,43 @@ def reset_token(token):
         return redirect( url_for('login') )
     return render_template('reset_token.html', title = 'Reset Password', form = form)
 
+@app.route('/time')
+def get_current_time():
+    return {'time':time.time()}
+
+@app.route('/anime',methods=["GET","POST"])
+def get_anime():
+    # Here we define our query as a multi-line string
+    id=str(request.get_json())
+    query = '''
+        query ($search: String) { 
+        Media (search: $search) {
+            id
+            title {
+            english
+            native
+            }
+            description
+            coverImage{
+                medium
+                }
+        }
+    }
+    '''
+
+    # Define our query variables and values that will be used in the query request
+    variables = {
+        'search': id
+    }
+
+    url = 'https://graphql.anilist.co'
+
+    # Make the HTTP Api request
+    r = requests.post(url, json={'query': query, 'variables': variables})
+    json_data=r.json()
+    # name = json_data['data']['Media']['title']['english']
+    # print(f"\n\n {json_data['data']['Media']['title']['english']} \n\n")
+    # return {"anime":name}
+    print(f"\n\n {id} \n\n")
+    print(f"\n\n {json_data['data']['Media']['title']['english']} \n\n")
+    return json_data

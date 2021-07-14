@@ -1,2 +1,2 @@
-# Flask_blog
-A blog made using Flask with bulma for frontend styling
+# React_Flask
+A blog made using Flask with react for frontend 
