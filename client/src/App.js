@@ -4,7 +4,8 @@ import {useEffect,useState } from 'react';
 import {Anime} from './components/Anime';
 import {Navbar} from './components/Navbar'
 import {Animate} from "./components/Animate"
-import {Card} from "./components/Card"
+// import {Card} from "./components/Card"
+import {Home} from "./components/Home";
 
 function App() {
 
@@ -21,7 +22,8 @@ function App() {
       <header className="App-header w-auto m-auto">
         <Navbar/>
         <Animate/>
-        <Card/>
+        <Home/>
+        {/* <Card/> */}
        <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>

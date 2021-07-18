@@ -1,7 +1,10 @@
+/* @import "../index.css"; */
+@import url("../index.css");
+
 .card-box{
     height: 20rem;
     padding: 1rem;
-    box-shadow: 0 1rem 4rem -2rem #0ad487;
+    box-shadow: 0 1rem 4rem -2rem var(--hgColor);
     border-radius: 0.5rem;
     background-color: #ffffff;
     max-width: 768px;
@@ -25,8 +28,8 @@
     height: 7rem;
     object-fit: scale-down;
     background-color: white;
-    border-width: 0.3rem;
-    border-color: rgb(0, 255, 149);
+    border-width: 0.5rem;
+    border-color: var(--hgColor);
 }
 
 .content{
@@ -37,12 +40,12 @@
 .content-title{
     font-weight: 700;
     font-size: 1.5rem;
-    color: #00d97f;
+    color: var(--hgColor);
 }
 
 .content-para{
     font-weight: 400;
-    color: #727272;
+    color: var(--muColor);
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;

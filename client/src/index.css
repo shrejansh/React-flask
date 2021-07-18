@@ -1,6 +1,9 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+
+
+:root{
+  --hgColor:#00c7b6;
+  --muColor:#727272;
+}
 
 /* body {
   margin: 0;

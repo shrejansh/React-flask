@@ -1,3 +1,5 @@
+@import url("../index.css");
+
 .nav-container{
     max-width: 1024px;
     margin: auto;
@@ -41,7 +43,7 @@
 }
 
 .nav-brand:hover{
-    color: #828282;
+    color: var(--muColor);
 }
 
 .nav-items{
@@ -52,7 +54,7 @@
 }
 
 .nav-items:hover{
-    color: #828282;
+    color: var(--muColor);
 }
 
 .nav-menu{
