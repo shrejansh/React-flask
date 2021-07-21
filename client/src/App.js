@@ -6,6 +6,9 @@ import {Navbar} from './components/Navbar'
 import {Animate} from "./components/Animate"
 // import {Card} from "./components/Card"
 import {Home} from "./components/Home";
+import {Button} from "./components/button";
+
+
 
 function App() {
 
@@ -18,28 +21,11 @@ function App() {
   },[]);
 
   return (
-    <div className="App bg-dark-light ">
-      <header className="App-header w-auto m-auto">
-        <Navbar/>
-        <Animate/>
-        <Home/>
-        {/* <Card/> */}
-       <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Lea React
-        </a>
-        <p>Show time {currentTime}</p>
-        
-        {/* <Anime/> */}
-      </header>
+  
+    <div>
+      <Navbar/>
     </div>
+   
   );
 }
 

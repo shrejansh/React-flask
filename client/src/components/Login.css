@@ -1,0 +1,10 @@
+.inp{
+    border:none;
+    outline: none;
+    
+}
+
+.inp:hover{
+    background-color: papayawhip;
+    border: 5px solid red;
+}
