@@ -6,4 +6,5 @@ export const GridItem=styled.div`
     grid-row-start:  ${(props)=>props.rowStart};
     grid-row-end:  ${(props)=>props.rowEnd};
     place-self: center;
+    
 `

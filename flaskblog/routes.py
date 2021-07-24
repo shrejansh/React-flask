@@ -4,7 +4,7 @@ from PIL import Image
 import time
 import requests
 
-from flask import render_template,url_for, flash, redirect, request, abort
+from flask import render_template,url_for, flash, redirect, request, abort, session 
 from flaskblog import app, db, bcrypt, mail
 from flaskblog.models import User, Post
 from flaskblog.forms import RegistrationForm, LoginForm , UpdateAccountForm, PostForm, RequestResetForm, ResetPasswordForm
@@ -40,6 +40,33 @@ def register():
         flash(f'Account created !!', "success")
         return redirect( url_for('login') )
     return render_template('register.html',title='Register', form=form)
+
+@app.route("/register12", methods=["GET","POST"])
+def registers():
+    user_info=request.get_json()
+    hashed_password=bcrypt.generate_password_hash(user_info[2]).decode('utf-8')
+    user = User(username = str(user_info[1]) , email = str(user_info[0]) , password = hashed_password)
+    
+    print(f"\n\n{user_info[0]}\n\n")
+    db.session.add(user)
+    db.session.commit()
+    user = User.query.filter_by(email = user_info[0]).first()
+    statement={"email":user.email,"username":user.username}
+    
+    print(f"\n\n{user.password}\n\n")
+    return statement
+
+@app.route("/login12",methods=['GET','POST']) 
+def logins():
+    user_info=request.get_json()
+    user = User.query.filter_by(email = user_info[0]).first()
+    print(f"\n\n{user_info[0]}\n\n")
+    if user and bcrypt.check_password_hash(user.password, user_info[1]):
+        login_user(user)
+    statement={"email":user.email,"username":user.username}
+    
+    print(f"\n\n{user.email}\n\n")
+    return statement   
 
 @app.route("/logout")
 def logout():
